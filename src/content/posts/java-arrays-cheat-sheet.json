@@ -1,0 +1,175 @@
+{
+  "title": "Java Arrays Cheat Sheet",
+  "language": "java",
+  "sections": [
+    {
+      "subtitle": "Array Creation and Initialization",
+      "snippets": [
+        {
+          "description": [
+            "Creating an Array with a specified size. The array elements will be initialized to their default values (0 for int)."
+          ],
+          "code": "int[] intArray = new int[5];\n// Output: [0, 0, 0, 0, 0]"
+        },
+        {
+          "description": [
+            "Creating and Initializing an Array with specified values."
+          ],
+          "code": "int[] intArray = {1, 2, 3, 4, 5};\n// Output: [1, 2, 3, 4, 5]"
+        },
+        {
+          "description": [
+            "Creating an Array using the 'new' keyword with specified values."
+          ],
+          "code": "int[] intArray = new int[]{1, 2, 3, 4, 5};\n// Output: [1, 2, 3, 4, 5]"
+        }
+      ]
+    },
+    {
+      "subtitle": "Accessing Array Elements",
+      "snippets": [
+        {
+          "description": ["Accessing the first element of the array."],
+          "code": "int firstElement = intArray[0];\n// Output: 1"
+        },
+        {
+          "description": ["Accessing the last element of the array."],
+          "code": "int lastElement = intArray[intArray.length - 1];\n// Output: 5"
+        }
+      ]
+    },
+    {
+      "subtitle": "Modifying Array Elements",
+      "snippets": [
+        {
+          "description": [
+            "Changing the value of the first element in the array."
+          ],
+          "code": "intArray[0] = 10;\n// Output: [10, 2, 3, 4, 5]"
+        },
+        {
+          "description": [
+            "Changing the value of the last element in the array."
+          ],
+          "code": "intArray[intArray.length - 1] = 20;\n// Output: [10, 2, 3, 4, 20]"
+        }
+      ]
+    },
+    {
+      "subtitle": "Array Length",
+      "snippets": [
+        {
+          "description": ["Getting the length of the array."],
+          "code": "int length = intArray.length;\n// Output: 5"
+        }
+      ]
+    },
+    {
+      "subtitle": "Iterating Over Arrays",
+      "snippets": [
+        {
+          "description": ["Using a For Loop to iterate over the array."],
+          "code": "for (int i = 0; i < intArray.length; i++) {\n    System.out.println(intArray[i]);\n}\n// Output: 10 2 3 4 20"
+        },
+        {
+          "description": ["Using a For-Each Loop to iterate over the array."],
+          "code": "for (int num : intArray) {\n    System.out.println(num);\n}\n// Output: 10 2 3 4 20"
+        }
+      ]
+    },
+    {
+      "subtitle": "Multi-dimensional Arrays",
+      "snippets": [
+        {
+          "description": [
+            "Creating a 2D Array with a specified size. The array elements will be initialized to their default values (0 for int)."
+          ],
+          "code": "int[][] matrix = new int[3][3];\n// Output: [[0, 0, 0], [0, 0, 0], [0, 0, 0]]"
+        },
+        {
+          "description": ["Initializing a 2D Array with specified values."],
+          "code": "int[][] matrix = {\n    {1, 2, 3},\n    {4, 5, 6},\n    {7, 8, 9}\n};\n// Output: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]"
+        },
+        {
+          "description": ["Accessing an element in a 2D Array."],
+          "code": "int element = matrix[0][1];\n// Output: 2"
+        },
+        {
+          "description": ["Iterating over a 2D Array."],
+          "code": "for (int i = 0; i < matrix.length; i++) {\n    for (int j = 0; j < matrix[i].length; j++) {\n        System.out.print(matrix[i][j] + \" \");\n    }\n    System.out.println();\n}\n// Output:\n// 1 2 3\n// 4 5 6\n// 7 8 9"
+        }
+      ]
+    },
+    {
+      "subtitle": "Common Array Operations",
+      "snippets": [
+        {
+          "description": ["Sorting an array in ascending order."],
+          "code": "Arrays.sort(intArray);\n// Output: [2, 3, 4, 10, 20]"
+        },
+        {
+          "description": ["Copying an array."],
+          "code": "int[] copiedArray = Arrays.copyOf(intArray, intArray.length);\n// Output: [2, 3, 4, 10, 20]"
+        },
+        {
+          "description": ["Filling an array with a specified value."],
+          "code": "Arrays.fill(intArray, 0);\n// Output: [0, 0, 0, 0, 0]"
+        },
+        {
+          "description": ["Comparing two arrays for equality."],
+          "code": "boolean areEqual = Arrays.equals(intArray, copiedArray);\n// Output: false"
+        },
+        {
+          "description": [
+            "Searching for a value in a sorted array using binary search."
+          ],
+          "code": "int index = Arrays.binarySearch(intArray, 3);\n// Output: -1 (since intArray is filled with 0s after the fill operation)"
+        },
+        {
+          "description": ["Converting an array to a string."],
+          "code": "String arrayString = Arrays.toString(intArray);\n// Output: [0, 0, 0, 0, 0]"
+        },
+        {
+          "description": ["Finding the maximum value in an array."],
+          "code": "int max = Arrays.stream(intArray).max().orElseThrow(NoSuchElementException::new);\n// Output: 0"
+        },
+        {
+          "description": "Finding the minimum value in an array.",
+          "code": "int min = Arrays.stream(intArray).min().orElseThrow(NoSuchElementException::new);\n// Output: 0"
+        },
+        {
+          "description": "Calculating the sum of all elements in an array.",
+          "code": "int sum = Arrays.stream(intArray).sum();\n// Output: 0"
+        },
+        {
+          "description": "Calculating the average of all elements in an array.",
+          "code": "double average = Arrays.stream(intArray).average().orElse(0);\n// Output: 0.0"
+        },
+        {
+          "description": "Cloning an array.",
+          "code": "int[] clonedArray = intArray.clone();\n// Output: [0, 0, 0, 0, 0]"
+        },
+        {
+          "description": "Checking if an array is empty.",
+          "code": "boolean isEmpty = intArray.length == 0;\n// Output: false"
+        },
+        {
+          "description": "Reversing an array.",
+          "code": "int[] reversedArray = new int[intArray.length];\nfor (int i = 0; i < intArray.length; i++) {\n    reversedArray[i] = intArray[intArray.length - 1 - i];\n}\n// Output: [0, 0, 0, 0, 0]"
+        },
+        {
+          "description": "Converting an array to a List.",
+          "code": "List<Integer> arrayList = Arrays.asList(Arrays.stream(intArray).boxed().toArray(Integer[]::new));\n// Output: [0, 0, 0, 0, 0]"
+        },
+        {
+          "description": "Converting a List to an array.",
+          "code": "List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);\nInteger[] array = list.toArray(new Integer[0]);\n// Output: [1, 2, 3, 4, 5]"
+        },
+        {
+          "description": "Joining two arrays.",
+          "code": "int[] array1 = {1, 2, 3};\nint[] array2 = {4, 5, 6};\nint[] joinedArray = IntStream.concat(Arrays.stream(array1), Arrays.stream(array2)).toArray();\n// Output: [1, 2, 3, 4, 5, 6]"
+        }
+      ]
+    }
+  ]
+}

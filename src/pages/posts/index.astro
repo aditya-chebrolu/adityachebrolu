@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+const posts = await getCollection("posts");
+---
+
+<style>
+  .links {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+</style>
+
+<div class="links">
+  {posts.map((post) => <a href={`/posts/${post.id}`}>{post.data.title}</a>)}
+</div>
