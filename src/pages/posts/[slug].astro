@@ -38,21 +38,33 @@ const { post } = Astro.props;
     gap: 10px;
   }
 </style>
-<div>
-  <div>{post.title}</div>
-  <div class="sections">
-    {
-      post.sections.map((section) => (
-        <div class="section">
-          <div>{section.subtitle}</div>
-          {section.snippets.map((snippet) => (
-            <CodeBlock
-              description={snippet.description}
-              codeHtml={snippet.codeHtml}
-            />
-          ))}
-        </div>
-      ))
-    }
-  </div>
-</div>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <div>
+      <div>{post.title}</div>
+      <div class="sections">
+        {
+          post.sections.map((section) => (
+            <div class="section">
+              <div>{section.subtitle}</div>
+              {section.snippets.map((snippet) => (
+                <CodeBlock
+                  description={snippet.description}
+                  codeHtml={snippet.codeHtml}
+                />
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </body>
+</html>
