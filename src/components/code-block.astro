@@ -12,7 +12,7 @@ const { description, codeHtml } = Astro.props;
     border: solid 1.5px #343841;
   }
 
-  .box > .description {
+  .description {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -21,9 +21,12 @@ const { description, codeHtml } = Astro.props;
     color: #c0c0c0;
     background-color: #17181c;
     border-bottom: solid 1.5px #343841;
+    > div > .highlighted {
+      color: #318ce7;
+    }
   }
 
-  .box > .code {
+  .code {
     font-size: 14px;
     color: #dbdbdb;
     padding: 6px 8px;
@@ -36,8 +39,35 @@ const { description, codeHtml } = Astro.props;
       margin: 0;
     }
   }
+
+  @media (min-width: 900px) {
+    .description {
+      font-size: 15px;
+      padding: 10px 15px;
+    }
+    .code {
+      padding: 10px 15px;
+      line-height: 24px;
+    }
+    .code::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    .code::-webkit-scrollbar-thumb {
+      background: #343841;
+    }
+    .code::-webkit-scrollbar-track {
+      background: #0d0d0f;
+    }
+  }
 </style>
 <div class="box">
-  <div class="description" set:html={description} />
+  <div class="description">
+    {typeof description === "string" && <div>{description}</div>}
+    {
+      typeof description === "object" &&
+        description.map((desc) => <div set:html={desc} />)
+    }
+  </div>
   {codeHtml && <div class="code" set:html={codeHtml} />}
 </div>
