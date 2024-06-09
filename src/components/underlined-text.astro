@@ -1,0 +1,82 @@
+---
+type Sizes = "xs" | "sm" | "md" | "lg" | "xl";
+type Props = {
+  text: string;
+  size?: { mweb: Sizes; dweb: Sizes } | Sizes;
+  color?: string | { dweb?: string; mweb?: string };
+  lineColor?: string | { dweb?: string; mweb?: string };
+  customStyles?: any;
+  type: "h1" | "h2" | "h3" | "h4";
+};
+const {
+  text,
+  type: Tag,
+  lineColor: lineColorProp,
+  color: colorProp,
+  size = "lg",
+} = Astro.props;
+const sizeStyles = {
+  dweb: {
+    xs: ["25px", "8px", "-6px"],
+    sm: ["30px", "9.5px", "-7px"],
+    md: ["40px", "12px", "-9px"],
+    lg: ["50px", "15px", "-11px"],
+    xl: ["80px", "24px", "-17.5px"],
+  },
+  mweb: {
+    xs: ["18px", "6px", "-4.5px"],
+    sm: ["25px", "8px", "-6px"],
+    md: ["30px", "9.5px", "-7px"],
+    lg: ["40px", "12px", "-9px"],
+    xl: ["40px", "12px", "-9px"],
+  },
+};
+
+const lineColor = lineColorProp ?? "#ef9b0f";
+const color = colorProp ?? "#2a3439";
+
+const [mwebFontSize, mwebLineThickness, mwebLineOffset] =
+  sizeStyles["mweb"][typeof size === "object" ? size.mweb : size];
+const [dwebFontSize, dwebLineThickness, dwebLineOffset] =
+  sizeStyles["dweb"][typeof size === "object" ? size.dweb : size];
+---
+
+<style
+  define:vars={{
+    color,
+    lineColor,
+    mwebFontSize,
+    mwebLineThickness,
+    mwebLineOffset,
+    dwebFontSize,
+    dwebLineThickness,
+    dwebLineOffset,
+  }}
+>
+  .heading {
+    margin: unset;
+    padding: unset;
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+    /* color */
+    color: var(--color);
+    text-decoration-color: var(--lineColor);
+
+    /* sizes */
+    font-weight: bold;
+    font-size: var(--mwebFontSize);
+    line-height: var(--mwebFontSize);
+    text-underline-offset: var(--mwebLineOffset);
+    text-decoration-thickness: var(--mwebLineThickness);
+  }
+
+  @media (min-width: 900px) {
+    .heading {
+      font-size: var(--dwebFontSize);
+      line-height: var(--dwebFontSize);
+      text-underline-offset: var(--dwebLineOffset);
+      text-decoration-thickness: var(--dwebLineThickness);
+    }
+  }
+</style>
+<h1 class:list={["heading"]}>{text}</h1>

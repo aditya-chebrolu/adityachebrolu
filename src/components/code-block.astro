@@ -8,10 +8,22 @@ const { description, codeHtml } = Astro.props;
 ---
 
 <style>
+  @keyframes scrollAnim {
+    from {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
   .box {
     border: solid 1.5px #343841;
+    animation: scrollAnim forwards linear;
+    animation-timeline: view();
+    animation-range: 0px 100px;
   }
-
   .description {
     display: flex;
     flex-direction: column;
@@ -25,7 +37,6 @@ const { description, codeHtml } = Astro.props;
       color: #318ce7;
     }
   }
-
   .code {
     font-size: 14px;
     color: #dbdbdb;
@@ -39,7 +50,6 @@ const { description, codeHtml } = Astro.props;
       margin: 0;
     }
   }
-
   @media (min-width: 900px) {
     .description {
       font-size: 15px;

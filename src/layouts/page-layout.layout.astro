@@ -1,0 +1,64 @@
+---
+import "../styles/globals.css";
+import "@fontsource/source-sans-pro/700.css";
+import UnderlinedText from "../components/underlined-text.astro";
+
+type Props = {
+  pageTitle: string;
+};
+
+const { pageTitle } = Astro.props;
+---
+
+<style>
+  body {
+    background-image: radial-gradient(circle, #232323 0.5px, black 1px);
+    background-size: 17px 17px;
+    background-color: black;
+    font-family: "Source Sans Pro", sans-serif;
+    color: white;
+  }
+  .wrapper {
+    margin-inline: 20px;
+    margin-block: 20px;
+  }
+
+  .header {
+    padding-inline: 20px;
+    padding-block: 10px;
+    border-bottom: solid 1.5px #1c1c20;
+    background-color: #0d0d0f;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  @media (min-width: 900px) {
+    .wrapper {
+      margin-inline: 20%;
+    }
+
+    .header {
+      padding-inline: 20%;
+      padding-block: 15px;
+      gap: 15px;
+    }
+  }
+</style>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{pageTitle}</title>
+  </head>
+  <body>
+    <div class="header">
+      <UnderlinedText text={pageTitle} type="h1" size="md" color="#FFFFFF" />
+    </div>
+    <div class="wrapper">
+      <slot />
+    </div>
+  </body>
+</html>
