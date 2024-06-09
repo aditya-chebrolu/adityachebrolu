@@ -1,7 +1,6 @@
 ---
 import "../styles/globals.css";
-import "@fontsource/source-sans-pro/700.css";
-import UnderlinedText from "../components/underlined-text.astro";
+import UnderlinedText from "../components/underlined-text/index.astro";
 
 type Props = {
   pageTitle: string;
@@ -15,7 +14,6 @@ const { pageTitle } = Astro.props;
     background-image: radial-gradient(circle, #232323 0.5px, black 1px);
     background-size: 17px 17px;
     background-color: black;
-    font-family: "Source Sans Pro", sans-serif;
     color: white;
   }
   .wrapper {
