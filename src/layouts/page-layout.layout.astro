@@ -1,4 +1,6 @@
 ---
+import "@fontsource/source-sans-pro/400.css";
+import "@fontsource/source-sans-pro/700.css";
 import "../styles/globals.css";
 import UnderlinedText from "../components/underlined-text.astro";
 
@@ -66,10 +68,10 @@ const { pageTitle, underlineColor = "" } = Astro.props;
       type="font/woff"
       crossorigin="anonymous"
     /> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" /> -->
+    <!-- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /> -->
     <!-- Preload critical font styles -->
-    <link
+    <!-- <link
       rel="preload"
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
       as="style"
@@ -77,7 +79,7 @@ const { pageTitle, underlineColor = "" } = Astro.props;
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap"
-    />
+    /> -->
     <title>{pageTitle}</title>
   </head>
   <body>
