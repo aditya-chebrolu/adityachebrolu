@@ -62,12 +62,12 @@ const { post } = Astro.props;
       post.sections.map((section) => (
         <div class="section">
           <div class="title">{section.subtitle}</div>
-          {/* {section.snippets.map((snippet) => (
+          {section.snippets.map((snippet) => (
             <CodeBlock
               description={snippet.description}
               codeHtml={snippet.codeHtml}
             />
-          ))} */}
+          ))}
         </div>
       ))
     }
