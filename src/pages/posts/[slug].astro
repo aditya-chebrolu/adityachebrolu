@@ -1,8 +1,8 @@
 ---
+import PageLayout from "../../layouts/page-layout.layout.astro";
 import { getCollection } from "astro:content";
 import CodeBlock from "../../components/code-block.astro";
 import { getCodeHtml } from "../../utils/get-code-html";
-import PageLayout from "../../layouts/page-layout.layout.astro";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
@@ -57,7 +57,7 @@ const { post } = Astro.props;
 </style>
 
 <PageLayout pageTitle={post.title}>
-  <div class="sections">
+  <!-- <div class="sections">
     {
       post.sections.map((section) => (
         <div class="section">
@@ -72,5 +72,5 @@ const { post } = Astro.props;
       ))
     }
   </div>
-  <div class="welcome">You're welcome 🤗</div>
+  <div class="welcome">You're welcome 🤗</div> -->
 </PageLayout>
