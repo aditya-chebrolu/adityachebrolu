@@ -57,20 +57,20 @@ const { post } = Astro.props;
 </style>
 
 <PageLayout pageTitle={post.title}>
-  <!-- <div class="sections">
+  <div class="sections">
     {
       post.sections.map((section) => (
         <div class="section">
           <div class="title">{section.subtitle}</div>
-          {section.snippets.map((snippet) => (
+          {/* {section.snippets.map((snippet) => (
             <CodeBlock
               description={snippet.description}
               codeHtml={snippet.codeHtml}
             />
-          ))}
+          ))} */}
         </div>
       ))
     }
-  </div> -->
+  </div>
   <div class="welcome">You're welcome 🤗</div>
 </PageLayout>
