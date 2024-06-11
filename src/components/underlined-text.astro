@@ -18,7 +18,7 @@ const {
   size = "lg",
 } = Astro.props;
 
-const lineColor = lineColorProp ?? "#ef9b0f";
+const lineColor = lineColorProp || "#ef9b0f";
 const color = colorProp ?? "#2a3439";
 const [mwebFontSize, mwebLineThickness, mwebLineOffset] =
   underlinedTextSizeStyles["mweb"][typeof size === "object" ? size.mweb : size];
