@@ -1,0 +1,49 @@
+---
+import { getCollection } from "astro:content";
+import PageLayout from "../../layouts/page-layout.layout.astro";
+
+const posts = await getCollection("posts");
+const tagsSet = new Set(posts.flatMap((post) => post.data.tags));
+const tags = Array.from(tagsSet);
+---
+
+<style>
+  .tags {
+    align-self: center;
+    margin-block: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    row-gap: 5px;
+
+    &:has(> a:hover) > a:not(:hover) {
+      opacity: 0.2;
+    }
+
+    > a {
+      color: #ffcc33;
+      transition: all 200ms;
+      &:hover {
+        color: #fbec5d;
+        scale: 1.5;
+      }
+    }
+  }
+  @media (min-width: 900px) {
+    .tags {
+      max-width: 400px;
+    }
+  }
+</style>
+<PageLayout pageTitle="All Tags" underlineColor="#0D98BA">
+  <div class="tags">
+    {
+      tags.map((tag) => (
+        <a href={`/tags/${tag}`} class="tag">
+          #{tag}
+        </a>
+      ))
+    }
+  </div>
+</PageLayout>
