@@ -1,6 +1,16 @@
 {
   "title": "Java Collections Cheat Sheet",
   "language": "java",
+  "tags": [
+    "java",
+    "collections",
+    "cheat sheet",
+    "sets",
+    "maps",
+    "lists",
+    "queues",
+    "stacks"
+  ],
   "sections": [
     {
       "subtitle": "Lists",

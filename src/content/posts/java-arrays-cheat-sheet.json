@@ -1,6 +1,7 @@
 {
   "title": "Java Arrays Cheat Sheet",
   "language": "java",
+  "tags": ["java", "arrays", "cheat sheet"],
   "sections": [
     {
       "subtitle": "Array Creation and Initialization",

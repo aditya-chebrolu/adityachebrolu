@@ -1,1 +1,93 @@
-{"title":"Java Comparator and Comparison","language":"java","sections":[{"subtitle":"Comparable Interface","snippets":[{"description":["Implementing <span class=\"highlighted\">Comparable</span>"],"code":"class Person implements Comparable<Person> {\n    private String name;\n    private int age;\n\n    public Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n\n    @Override\n    public int compareTo(Person other) {\n        return Integer.compare(this.age, other.age);\n    }\n\n    // Getters and toString() method\n}"},{"description":["Sorting with <span class=\"highlighted\">Comparable</span>"],"code":"List<Person> people = new ArrayList<>();\npeople.add(new Person(\"Alice\", 30));\npeople.add(new Person(\"Bob\", 25));\npeople.add(new Person(\"Charlie\", 35));\n\nCollections.sort(people);\nfor (Person person : people) {\n    System.out.println(person);\n}\n// Output:\n// Person{name='Bob', age=25}\n// Person{name='Alice', age=30}\n// Person{name='Charlie', age=35}"}]},{"subtitle":"Comparator Interface","snippets":[{"description":["Implementing <span class=\"highlighted\">Comparator</span>"],"code":"class PersonNameComparator implements Comparator<Person> {\n    @Override\n    public int compare(Person p1, Person p2) {\n        return p1.getName().compareTo(p2.getName());\n    }\n}"},{"description":["Sorting with <span class=\"highlighted\">Comparator</span>"],"code":"List<Person> people = new ArrayList<>();\npeople.add(new Person(\"Alice\", 30));\npeople.add(new Person(\"Bob\", 25));\npeople.add(new Person(\"Charlie\", 35));\n\nCollections.sort(people, new PersonNameComparator());\nfor (Person person : people) {\n    System.out.println(person);\n}\n// Output:\n// Person{name='Alice', age=30}\n// Person{name='Bob', age=25}\n// Person{name='Charlie', age=35}"},{"description":["Using Anonymous <span class=\"highlighted\">Comparator</span>"],"code":"Collections.sort(people, new Comparator<Person>() {\n    @Override\n    public int compare(Person p1, Person p2) {\n        return Integer.compare(p1.getAge(), p2.getAge());\n    }\n});"},{"description":["Using <span class=\"highlighted\">Lambda Expression</span>"],"code":"Collections.sort(people, (p1, p2) -> p1.getName().compareTo(p2.getName()));"}]},{"subtitle":"Common Comparison Methods","snippets":[{"description":["Comparing <span class=\"highlighted\">Integers</span>: Returns -1 if the first value is less than the second, 0 if equal, and 1 if greater"],"code":"int result1 = Integer.compare(10, 20); // -1\nint result2 = Integer.compare(20, 10); // 1\nint result3 = Integer.compare(10, 10); // 0"},{"description":["Comparing <span class=\"highlighted\">Doubles</span>: Returns -1 if the first value is less than the second, 0 if equal, and 1 if greater"],"code":"int result1 = Double.compare(10.5, 20.5); // -1\nint result2 = Double.compare(20.5, 10.5); // 1\nint result3 = Double.compare(10.5, 10.5); // 0"},{"description":["Comparing <span class=\"highlighted\">Strings</span>: Returns -1 if the first string is lexicographically less than the second, 0 if equal, and 1 if greater"],"code":"int result1 = \"apple\".compareTo(\"banana\"); // -1\nint result2 = \"banana\".compareTo(\"apple\"); // 1\nint result3 = \"apple\".compareTo(\"apple\"); // 0"},{"description":["Comparing with <span class=\"highlighted\">nullsFirst</span> and <span class=\"highlighted\">nullsLast</span>: Sorts with nulls first or last respectively"],"code":"List<String> strings = Arrays.asList(\"apple\", null, \"banana\");\nCollections.sort(strings, Comparator.nullsFirst(String::compareTo)); // [null, \"apple\", \"banana\"]\nCollections.sort(strings, Comparator.nullsLast(String::compareTo)); // [\"apple\", \"banana\", null]"}]},{"subtitle":"Comparator Chaining","snippets":[{"description":["Chaining <span class=\"highlighted\">Comparators</span>: First compares by name, then by age"],"code":"Comparator<Person> comparator = Comparator.comparing(Person::getName)\n                                          .thenComparing(Person::getAge);\n\nCollections.sort(people, comparator);"}]}]}
+{
+  "title": "Java Comparator and Comparison",
+  "language": "java",
+  "tags": ["java", "comparable", "comparator", "sorting"],
+  "sections": [
+    {
+      "subtitle": "Comparable Interface",
+      "snippets": [
+        {
+          "description": [
+            "Implementing <span class=\"highlighted\">Comparable</span>"
+          ],
+          "code": "class Person implements Comparable<Person> {\n    private String name;\n    private int age;\n\n    public Person(String name, int age) {\n        this.name = name;\n        this.age = age;\n    }\n\n    @Override\n    public int compareTo(Person other) {\n        return Integer.compare(this.age, other.age);\n    }\n\n    // Getters and toString() method\n}"
+        },
+        {
+          "description": [
+            "Sorting with <span class=\"highlighted\">Comparable</span>"
+          ],
+          "code": "List<Person> people = new ArrayList<>();\npeople.add(new Person(\"Alice\", 30));\npeople.add(new Person(\"Bob\", 25));\npeople.add(new Person(\"Charlie\", 35));\n\nCollections.sort(people);\nfor (Person person : people) {\n    System.out.println(person);\n}\n// Output:\n// Person{name='Bob', age=25}\n// Person{name='Alice', age=30}\n// Person{name='Charlie', age=35}"
+        }
+      ]
+    },
+    {
+      "subtitle": "Comparator Interface",
+      "snippets": [
+        {
+          "description": [
+            "Implementing <span class=\"highlighted\">Comparator</span>"
+          ],
+          "code": "class PersonNameComparator implements Comparator<Person> {\n    @Override\n    public int compare(Person p1, Person p2) {\n        return p1.getName().compareTo(p2.getName());\n    }\n}"
+        },
+        {
+          "description": [
+            "Sorting with <span class=\"highlighted\">Comparator</span>"
+          ],
+          "code": "List<Person> people = new ArrayList<>();\npeople.add(new Person(\"Alice\", 30));\npeople.add(new Person(\"Bob\", 25));\npeople.add(new Person(\"Charlie\", 35));\n\nCollections.sort(people, new PersonNameComparator());\nfor (Person person : people) {\n    System.out.println(person);\n}\n// Output:\n// Person{name='Alice', age=30}\n// Person{name='Bob', age=25}\n// Person{name='Charlie', age=35}"
+        },
+        {
+          "description": [
+            "Using Anonymous <span class=\"highlighted\">Comparator</span>"
+          ],
+          "code": "Collections.sort(people, new Comparator<Person>() {\n    @Override\n    public int compare(Person p1, Person p2) {\n        return Integer.compare(p1.getAge(), p2.getAge());\n    }\n});"
+        },
+        {
+          "description": [
+            "Using <span class=\"highlighted\">Lambda Expression</span>"
+          ],
+          "code": "Collections.sort(people, (p1, p2) -> p1.getName().compareTo(p2.getName()));"
+        }
+      ]
+    },
+    {
+      "subtitle": "Common Comparison Methods",
+      "snippets": [
+        {
+          "description": [
+            "Comparing <span class=\"highlighted\">Integers</span>: Returns -1 if the first value is less than the second, 0 if equal, and 1 if greater"
+          ],
+          "code": "int result1 = Integer.compare(10, 20); // -1\nint result2 = Integer.compare(20, 10); // 1\nint result3 = Integer.compare(10, 10); // 0"
+        },
+        {
+          "description": [
+            "Comparing <span class=\"highlighted\">Doubles</span>: Returns -1 if the first value is less than the second, 0 if equal, and 1 if greater"
+          ],
+          "code": "int result1 = Double.compare(10.5, 20.5); // -1\nint result2 = Double.compare(20.5, 10.5); // 1\nint result3 = Double.compare(10.5, 10.5); // 0"
+        },
+        {
+          "description": [
+            "Comparing <span class=\"highlighted\">Strings</span>: Returns -1 if the first string is lexicographically less than the second, 0 if equal, and 1 if greater"
+          ],
+          "code": "int result1 = \"apple\".compareTo(\"banana\"); // -1\nint result2 = \"banana\".compareTo(\"apple\"); // 1\nint result3 = \"apple\".compareTo(\"apple\"); // 0"
+        },
+        {
+          "description": [
+            "Comparing with <span class=\"highlighted\">nullsFirst</span> and <span class=\"highlighted\">nullsLast</span>: Sorts with nulls first or last respectively"
+          ],
+          "code": "List<String> strings = Arrays.asList(\"apple\", null, \"banana\");\nCollections.sort(strings, Comparator.nullsFirst(String::compareTo)); // [null, \"apple\", \"banana\"]\nCollections.sort(strings, Comparator.nullsLast(String::compareTo)); // [\"apple\", \"banana\", null]"
+        }
+      ]
+    },
+    {
+      "subtitle": "Comparator Chaining",
+      "snippets": [
+        {
+          "description": [
+            "Chaining <span class=\"highlighted\">Comparators</span>: First compares by name, then by age"
+          ],
+          "code": "Comparator<Person> comparator = Comparator.comparing(Person::getName)\n                                          .thenComparing(Person::getAge);\n\nCollections.sort(people, comparator);"
+        }
+      ]
+    }
+  ]
+}

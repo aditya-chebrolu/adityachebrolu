@@ -1,4 +1,6 @@
 ---
+import { underlinedTextSizeStyles } from "../styles/configs";
+
 type Sizes = "xs" | "sm" | "md" | "lg" | "xl";
 type Props = {
   text: string;
@@ -15,44 +17,16 @@ const {
   color: colorProp,
   size = "lg",
 } = Astro.props;
-const sizeStyles = {
-  dweb: {
-    xs: ["25px", "8px", "-6px"],
-    sm: ["30px", "9.5px", "-7px"],
-    md: ["40px", "12px", "-9px"],
-    lg: ["50px", "15px", "-11px"],
-    xl: ["80px", "24px", "-17.5px"],
-  },
-  mweb: {
-    xs: ["18px", "6px", "-4.5px"],
-    sm: ["25px", "8px", "-6px"],
-    md: ["30px", "9.5px", "-7px"],
-    lg: ["40px", "12px", "-9px"],
-    xl: ["40px", "12px", "-9px"],
-  },
-};
 
 const lineColor = lineColorProp ?? "#ef9b0f";
 const color = colorProp ?? "#2a3439";
-
 const [mwebFontSize, mwebLineThickness, mwebLineOffset] =
-  sizeStyles["mweb"][typeof size === "object" ? size.mweb : size];
+  underlinedTextSizeStyles["mweb"][typeof size === "object" ? size.mweb : size];
 const [dwebFontSize, dwebLineThickness, dwebLineOffset] =
-  sizeStyles["dweb"][typeof size === "object" ? size.dweb : size];
+  underlinedTextSizeStyles["dweb"][typeof size === "object" ? size.dweb : size];
 ---
 
-<style
-  define:vars={{
-    color,
-    lineColor,
-    mwebFontSize,
-    mwebLineThickness,
-    mwebLineOffset,
-    dwebFontSize,
-    dwebLineThickness,
-    dwebLineOffset,
-  }}
->
+<style>
   .heading {
     margin: unset;
     padding: unset;
@@ -76,7 +50,19 @@ const [dwebFontSize, dwebLineThickness, dwebLineOffset] =
       line-height: var(--dwebFontSize);
       text-underline-offset: var(--dwebLineOffset);
       text-decoration-thickness: var(--dwebLineThickness);
+      color: var(--color);
+      text-decoration-color: var(--lineColor);
     }
   }
 </style>
-<h1 class:list={["heading"]}>{text}</h1>
+
+<Tag
+  class="heading"
+  style={`--color: ${color}; --lineColor: ${lineColor}; --mwebFontSize: ${mwebFontSize}; --mwebLineThickness: ${mwebLineThickness}; --mwebLineOffset: ${mwebLineOffset}; --dwebFontSize: ${dwebFontSize}; --dwebLineThickness: ${dwebLineThickness}; --dwebLineOffset: ${dwebLineOffset};`}
+>
+  {text}
+</Tag>
+
+<!-- <div>
+  <Tag class:list={["heading"]}>{text}</Tag>
+</div> -->

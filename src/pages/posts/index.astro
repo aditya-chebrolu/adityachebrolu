@@ -1,16 +1,8 @@
 ---
-import { getCollection } from "astro:content";
-const posts = await getCollection("posts");
+import PageLayout from "../../layouts/page-layout.layout.astro";
+import PostsList from "../../components/posts-list.astro";
 ---
 
-<style>
-  .links {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-</style>
-
-<div class="links">
-  {posts.map((post) => <a href={`/posts/${post.id}`}>{post.data.title}</a>)}
-</div>
+<PageLayout pageTitle="Posts" underlineColor="#FB5F7F">
+  <PostsList />
+</PageLayout>

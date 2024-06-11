@@ -1,1 +1,87 @@
-{"title":"Swift Structs Cheat Sheet","language":"swift","sections":[{"subtitle":"Basic Struct","snippets":[{"description":"Defining a basic struct","code":"struct Person {\n    var name: String\n    var age: Int\n}"}]},{"subtitle":"Initialization","snippets":[{"description":"Memberwise initializer","code":"let person = Person(name: \"John\", age: 30)"},{"description":"Custom initializer","code":"struct Person {\n    var name: String\n    var age: Int\n\n    init(name: String, age: Int) {\n        self.name = name\n        self.age = age\n    }\n}\n\nlet person = Person(name: \"John\", age: 30)"}]},{"subtitle":"Methods","snippets":[{"description":"Defining a method","code":"struct Person {\n    var name: String\n    var age: Int\n\n    func greet() -> String {\n        return \"Hello, my name is \\(name) and I am \\(age) years old.\"\n    }\n}\n\nlet person = Person(name: \"John\", age: 30)\nprint(person.greet())"},{"description":"Mutating method","code":"struct Counter {\n    var count: Int = 0\n\n    mutating func increment() {\n        count += 1\n    }\n}\n\nvar counter = Counter()\ncounter.increment()\nprint(counter.count)"}]},{"subtitle":"Computed Properties","snippets":[{"description":"Defining computed properties","code":"struct Rectangle {\n    var width: Double\n    var height: Double\n\n    var area: Double {\n        return width * height\n    }\n}\n\nlet rect = Rectangle(width: 5.0, height: 4.0)\nprint(rect.area)"}]},{"subtitle":"Property Observers","snippets":[{"description":"Using willSet and didSet","code":"struct StepCounter {\n    var totalSteps: Int = 0 {\n        willSet(newTotalSteps) {\n            print(\"About to set totalSteps to \\(newTotalSteps)\")\n        }\n        didSet {\n            if totalSteps > oldValue {\n                print(\"Added \\(totalSteps - oldValue) steps\")\n            }\n        }\n    }\n}\n\nvar stepCounter = StepCounter()\nstepCounter.totalSteps = 10\nstepCounter.totalSteps = 15"}]},{"subtitle":"Static Properties and Methods","snippets":[{"description":"Defining static properties and methods","code":"struct SomeStruct {\n    static var storedTypeProperty = \"Some value.\"\n    static var computedTypeProperty: Int {\n        return 1\n    }\n    static func typeMethod() {\n        print(\"This is a type method.\")\n    }\n}\n\nprint(SomeStruct.storedTypeProperty)\nSomeStruct.typeMethod()"}]},{"subtitle":"Nested Types","snippets":[{"description":"Defining nested types","code":"struct OuterStruct {\n    struct NestedStruct {\n        var nestedProperty: Int\n    }\n    var outerProperty: NestedStruct\n}\n\nlet nestedInstance = OuterStruct.NestedStruct(nestedProperty: 5)\nlet outerInstance = OuterStruct(outerProperty: nestedInstance)\nprint(outerInstance.outerProperty.nestedProperty)"}]},{"subtitle":"Conforming to Protocols","snippets":[{"description":"Conforming to a protocol","code":"protocol Greetable {\n    func greet() -> String\n}\n\nstruct Person: Greetable {\n    var name: String\n    var age: Int\n\n    func greet() -> String {\n        return \"Hello, my name is \\(name) and I am \\(age) years old.\"\n    }\n}\n\nlet person = Person(name: \"John\", age: 30)\nprint(person.greet())"}]}]}
+{
+  "title": "Swift Structs Cheat Sheet",
+  "tags": ["swift", "structs", "cheat sheet"],
+  "language": "swift",
+  "sections": [
+    {
+      "subtitle": "Basic Struct",
+      "snippets": [
+        {
+          "description": "Defining a basic struct",
+          "code": "struct Person {\n    var name: String\n    var age: Int\n}"
+        }
+      ]
+    },
+    {
+      "subtitle": "Initialization",
+      "snippets": [
+        {
+          "description": "Memberwise initializer",
+          "code": "let person = Person(name: \"John\", age: 30)"
+        },
+        {
+          "description": "Custom initializer",
+          "code": "struct Person {\n    var name: String\n    var age: Int\n\n    init(name: String, age: Int) {\n        self.name = name\n        self.age = age\n    }\n}\n\nlet person = Person(name: \"John\", age: 30)"
+        }
+      ]
+    },
+    {
+      "subtitle": "Methods",
+      "snippets": [
+        {
+          "description": "Defining a method",
+          "code": "struct Person {\n    var name: String\n    var age: Int\n\n    func greet() -> String {\n        return \"Hello, my name is \\(name) and I am \\(age) years old.\"\n    }\n}\n\nlet person = Person(name: \"John\", age: 30)\nprint(person.greet())"
+        },
+        {
+          "description": "Mutating method",
+          "code": "struct Counter {\n    var count: Int = 0\n\n    mutating func increment() {\n        count += 1\n    }\n}\n\nvar counter = Counter()\ncounter.increment()\nprint(counter.count)"
+        }
+      ]
+    },
+    {
+      "subtitle": "Computed Properties",
+      "snippets": [
+        {
+          "description": "Defining computed properties",
+          "code": "struct Rectangle {\n    var width: Double\n    var height: Double\n\n    var area: Double {\n        return width * height\n    }\n}\n\nlet rect = Rectangle(width: 5.0, height: 4.0)\nprint(rect.area)"
+        }
+      ]
+    },
+    {
+      "subtitle": "Property Observers",
+      "snippets": [
+        {
+          "description": "Using willSet and didSet",
+          "code": "struct StepCounter {\n    var totalSteps: Int = 0 {\n        willSet(newTotalSteps) {\n            print(\"About to set totalSteps to \\(newTotalSteps)\")\n        }\n        didSet {\n            if totalSteps > oldValue {\n                print(\"Added \\(totalSteps - oldValue) steps\")\n            }\n        }\n    }\n}\n\nvar stepCounter = StepCounter()\nstepCounter.totalSteps = 10\nstepCounter.totalSteps = 15"
+        }
+      ]
+    },
+    {
+      "subtitle": "Static Properties and Methods",
+      "snippets": [
+        {
+          "description": "Defining static properties and methods",
+          "code": "struct SomeStruct {\n    static var storedTypeProperty = \"Some value.\"\n    static var computedTypeProperty: Int {\n        return 1\n    }\n    static func typeMethod() {\n        print(\"This is a type method.\")\n    }\n}\n\nprint(SomeStruct.storedTypeProperty)\nSomeStruct.typeMethod()"
+        }
+      ]
+    },
+    {
+      "subtitle": "Nested Types",
+      "snippets": [
+        {
+          "description": "Defining nested types",
+          "code": "struct OuterStruct {\n    struct NestedStruct {\n        var nestedProperty: Int\n    }\n    var outerProperty: NestedStruct\n}\n\nlet nestedInstance = OuterStruct.NestedStruct(nestedProperty: 5)\nlet outerInstance = OuterStruct(outerProperty: nestedInstance)\nprint(outerInstance.outerProperty.nestedProperty)"
+        }
+      ]
+    },
+    {
+      "subtitle": "Conforming to Protocols",
+      "snippets": [
+        {
+          "description": "Conforming to a protocol",
+          "code": "protocol Greetable {\n    func greet() -> String\n}\n\nstruct Person: Greetable {\n    var name: String\n    var age: Int\n\n    func greet() -> String {\n        return \"Hello, my name is \\(name) and I am \\(age) years old.\"\n    }\n}\n\nlet person = Person(name: \"John\", age: 30)\nprint(person.greet())"
+        }
+      ]
+    }
+  ]
+}

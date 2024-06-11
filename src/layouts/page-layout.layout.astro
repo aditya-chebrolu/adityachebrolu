@@ -1,12 +1,13 @@
 ---
 import "../styles/globals.css";
-import UnderlinedText from "../components/underlined-text/index.astro";
+import UnderlinedText from "../components/underlined-text.astro";
 
 type Props = {
   pageTitle: string;
+  underlineColor?: string;
 };
 
-const { pageTitle } = Astro.props;
+const { pageTitle, underlineColor = "" } = Astro.props;
 ---
 
 <style>
@@ -17,13 +18,13 @@ const { pageTitle } = Astro.props;
     color: white;
   }
   .wrapper {
-    margin-inline: 20px;
-    margin-block: 20px;
+    margin-inline: var(--inline-spacing);
+    margin-block: var(--block-spacing);
   }
 
   .header {
-    padding-inline: 20px;
-    padding-block: 10px;
+    padding-inline: var(--inline-spacing);
+    padding-block: var(--block-spacing);
     border-bottom: solid 1.5px #1c1c20;
     background-color: #0d0d0f;
     display: flex;
@@ -32,10 +33,6 @@ const { pageTitle } = Astro.props;
   }
 
   @media (min-width: 900px) {
-    .wrapper {
-      margin-inline: 20%;
-    }
-
     .header {
       padding-inline: 20%;
       padding-block: 15px;
@@ -53,7 +50,13 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <div class="header">
-      <UnderlinedText text={pageTitle} type="h1" size="md" color="#FFFFFF" />
+      <UnderlinedText
+        text={pageTitle}
+        type="h1"
+        size="md"
+        color="#FFFFFF"
+        lineColor={underlineColor}
+      />
     </div>
     <div class="wrapper">
       <slot />

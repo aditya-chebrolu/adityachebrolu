@@ -16,6 +16,7 @@ const postsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     language: z.string(),
+    tags: z.array(z.string()),
     sections: z.array(sectionSchema),
   }),
 });

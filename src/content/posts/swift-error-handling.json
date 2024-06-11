@@ -1,1 +1,89 @@
-{"title":"SwiftUI Error Handling Cheat Sheet","language":"swift","sections":[{"subtitle":"Basic Try-Catch","snippets":[{"description":["Basic usage of try-catch for error handling."],"code":"do {\n    try someFunctionThatThrows()\n} catch {\n    print(\"An error occurred: \\(error)\")\n}"}]},{"subtitle":"Try? for Optional Handling","snippets":[{"description":["Using try? to convert errors to optional values."],"code":"let result = try? someFunctionThatThrows()\nif let result = result {\n    print(\"Function succeeded: \\(result)\")\n} else {\n    print(\"Function failed\")\n}"}]},{"subtitle":"Try! for Forced Error Handling","snippets":[{"description":["Using try! to force unwrap results, will crash if an error occurs."],"code":"let result = try! someFunctionThatThrows()\nprint(\"Function succeeded: \\(result)\")"}]},{"subtitle":"Custom Error Types","snippets":[{"description":["Defining and using custom error types."],"code":"enum MyError: Error {\n    case runtimeError(String)\n}\n\ndo {\n    throw MyError.runtimeError(\"A runtime error occurred\")\n} catch MyError.runtimeError(let message) {\n    print(\"Runtime error: \\(message)\")\n} catch {\n    print(\"An unknown error occurred: \\(error)\")\n}"}]},{"subtitle":"Throwing Functions","snippets":[{"description":["Declaring and using functions that can throw errors."],"code":"func canThrowError() throws {\n    // Code that might throw an error\n}\n\ndo {\n    try canThrowError()\n    print(\"Function succeeded\")\n} catch {\n    print(\"An error occurred: \\(error)\")\n}"}]},{"subtitle":"Rethrows","snippets":[{"description":["Using rethrows to propagate errors from parameter functions."],"code":"func someFunction(callback: () throws -> Void) rethrows {\n    try callback()\n}\n\ndo {\n    try someFunction {\n        // Code that might throw an error\n    }\n} catch {\n    print(\"An error occurred: \\(error)\")\n}"}]},{"subtitle":"Do-Catch with Multiple Catch Blocks","snippets":[{"description":["Using multiple catch blocks to handle different errors."],"code":"do {\n    try someFunctionThatThrows()\n} catch MyError.runtimeError(let message) {\n    print(\"Runtime error: \\(message)\")\n} catch {\n    print(\"An unknown error occurred: \\(error)\")\n}"}]},{"subtitle":"Throwing Initializers","snippets":[{"description":["Declaring and using initializers that can throw errors."],"code":"struct SomeStruct {\n    init() throws {\n        // Code that might throw an error\n    }\n}\n\ndo {\n    let instance = try SomeStruct()\n    print(\"Initialization succeeded\")\n} catch {\n    print(\"An error occurred: \\(error)\")\n}"}]}]}
+{
+  "title": "SwiftUI Error Handling Cheat Sheet",
+  "tags": ["swift", "error", "handling", "try", "catch"],
+  "language": "swift",
+  "sections": [
+    {
+      "subtitle": "Basic Try-Catch",
+      "snippets": [
+        {
+          "description": ["Basic usage of try-catch for error handling."],
+          "code": "do {\n    try someFunctionThatThrows()\n} catch {\n    print(\"An error occurred: \\(error)\")\n}"
+        }
+      ]
+    },
+    {
+      "subtitle": "Try? for Optional Handling",
+      "snippets": [
+        {
+          "description": ["Using try? to convert errors to optional values."],
+          "code": "let result = try? someFunctionThatThrows()\nif let result = result {\n    print(\"Function succeeded: \\(result)\")\n} else {\n    print(\"Function failed\")\n}"
+        }
+      ]
+    },
+    {
+      "subtitle": "Try! for Forced Error Handling",
+      "snippets": [
+        {
+          "description": [
+            "Using try! to force unwrap results, will crash if an error occurs."
+          ],
+          "code": "let result = try! someFunctionThatThrows()\nprint(\"Function succeeded: \\(result)\")"
+        }
+      ]
+    },
+    {
+      "subtitle": "Custom Error Types",
+      "snippets": [
+        {
+          "description": ["Defining and using custom error types."],
+          "code": "enum MyError: Error {\n    case runtimeError(String)\n}\n\ndo {\n    throw MyError.runtimeError(\"A runtime error occurred\")\n} catch MyError.runtimeError(let message) {\n    print(\"Runtime error: \\(message)\")\n} catch {\n    print(\"An unknown error occurred: \\(error)\")\n}"
+        }
+      ]
+    },
+    {
+      "subtitle": "Throwing Functions",
+      "snippets": [
+        {
+          "description": [
+            "Declaring and using functions that can throw errors."
+          ],
+          "code": "func canThrowError() throws {\n    // Code that might throw an error\n}\n\ndo {\n    try canThrowError()\n    print(\"Function succeeded\")\n} catch {\n    print(\"An error occurred: \\(error)\")\n}"
+        }
+      ]
+    },
+    {
+      "subtitle": "Rethrows",
+      "snippets": [
+        {
+          "description": [
+            "Using rethrows to propagate errors from parameter functions."
+          ],
+          "code": "func someFunction(callback: () throws -> Void) rethrows {\n    try callback()\n}\n\ndo {\n    try someFunction {\n        // Code that might throw an error\n    }\n} catch {\n    print(\"An error occurred: \\(error)\")\n}"
+        }
+      ]
+    },
+    {
+      "subtitle": "Do-Catch with Multiple Catch Blocks",
+      "snippets": [
+        {
+          "description": [
+            "Using multiple catch blocks to handle different errors."
+          ],
+          "code": "do {\n    try someFunctionThatThrows()\n} catch MyError.runtimeError(let message) {\n    print(\"Runtime error: \\(message)\")\n} catch {\n    print(\"An unknown error occurred: \\(error)\")\n}"
+        }
+      ]
+    },
+    {
+      "subtitle": "Throwing Initializers",
+      "snippets": [
+        {
+          "description": [
+            "Declaring and using initializers that can throw errors."
+          ],
+          "code": "struct SomeStruct {\n    init() throws {\n        // Code that might throw an error\n    }\n}\n\ndo {\n    let instance = try SomeStruct()\n    print(\"Initialization succeeded\")\n} catch {\n    print(\"An error occurred: \\(error)\")\n}"
+        }
+      ]
+    }
+  ]
+}
