@@ -38,6 +38,24 @@ const { pageTitle, underlineColor = "" } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    position: sticky;
+    top: 0;
+  }
+
+  .navigations {
+    border-bottom: solid 1.5px #1c1c20;
+    background-color: #0d0d0f;
+    padding-inline: var(--inline-spacing);
+    padding-block: 8px;
+    display: flex;
+    gap: 25px;
+
+    > a {
+      color: #f5f5f5;
+      &:hover {
+        color: #ffbf00;
+      }
+    }
   }
 
   @media (min-width: 900px) {
@@ -83,14 +101,20 @@ const { pageTitle, underlineColor = "" } = Astro.props;
     <title>{pageTitle}</title>
   </head>
   <body>
-    <div class="header">
-      <UnderlinedText
-        text={pageTitle}
-        type="h1"
-        size="md"
-        color="#FFFFFF"
-        lineColor={underlineColor}
-      />
+    <div>
+      <div class="header">
+        <UnderlinedText
+          text={pageTitle}
+          type="h1"
+          size="md"
+          color="#FFFFFF"
+          lineColor={underlineColor}
+        />
+      </div>
+      <div class="navigations">
+        <a href="/tags">All Tags</a>
+        <a href="/posts">All Posts</a>
+      </div>
     </div>
     <div class="wrapper">
       <slot />
