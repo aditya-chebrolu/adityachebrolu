@@ -23,7 +23,7 @@ export const searchBarStyles = (scrolled = false) => css`
   background-color: black;
   color: white;
 
-  transition: all 300ms;
+  transition: all 150ms;
 
   width: 100%;
   ${scrolled ? "width: calc(100% + 20px)" : "calc(100% - 0px)"};
