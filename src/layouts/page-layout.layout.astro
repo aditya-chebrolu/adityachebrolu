@@ -21,6 +21,10 @@ const { pageTitle, underlineColor = "" } = Astro.props;
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
   }
   .wrapper {
     flex: 1;

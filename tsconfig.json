@@ -1,3 +1,15 @@
 {
-  "extends": "astro/tsconfigs/strict"
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "@emotion/react",
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*":["components/*"],
+      "@styles/*":["styles/*"],
+      "@layouts/*":["layouts/*"],
+      "@hooks/*":["hooks/*"],
+      "@modules/*":["modules/*"],
+    }
+  }
 }

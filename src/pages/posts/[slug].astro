@@ -1,8 +1,8 @@
 ---
 import PageLayout from "../../layouts/page-layout.layout.astro";
 import { getCollection } from "astro:content";
-import CodeBlock from "../../components/code-block.astro";
 import { getCodeHtml } from "../../utils/get-code-html";
+import PostPage from "@modules/post/index";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("posts");
@@ -28,27 +28,6 @@ const { post } = Astro.props;
 ---
 
 <style>
-  .sections {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  .section {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-
-    &:not(:last-of-type) {
-      border-bottom: solid 1px #232323;
-      padding-bottom: 25px;
-    }
-  }
-
-  .title {
-    color: #fada5e;
-    font-size: 18px;
-  }
-
   .welcome {
     color: #ffe4e1;
     text-align: center;
@@ -57,20 +36,6 @@ const { post } = Astro.props;
 </style>
 
 <PageLayout pageTitle={post.title}>
-  <div class="sections">
-    {
-      post.sections.map((section) => (
-        <div class="section">
-          <div class="title">{section.subtitle}</div>
-          {section.snippets.map((snippet) => (
-            <CodeBlock
-              description={snippet.description}
-              codeHtml={snippet.codeHtml}
-            />
-          ))}
-        </div>
-      ))
-    }
-  </div>
+  <PostPage data={post} client:load />
   <div class="welcome">You're welcome 🤗</div>
 </PageLayout>
