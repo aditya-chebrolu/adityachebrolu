@@ -1,5 +1,5 @@
 ---
-import { underlinedTextSizeStyles } from "../styles/configs";
+import { underlinedTextSizeStyles } from "../../styles/configs";
 
 type Sizes = "xs" | "sm" | "md" | "lg" | "xl";
 type Props = {
@@ -18,7 +18,7 @@ const {
   size = "lg",
 } = Astro.props;
 
-const lineColor = lineColorProp || "#ef9b0f";
+const lineColor = lineColorProp || "#FFBF00";
 const color = colorProp ?? "#2a3439";
 const [mwebFontSize, mwebLineThickness, mwebLineOffset] =
   underlinedTextSizeStyles["mweb"][typeof size === "object" ? size.mweb : size];
@@ -35,6 +35,11 @@ const [dwebFontSize, dwebLineThickness, dwebLineOffset] =
     /* color */
     color: var(--color);
     text-decoration-color: var(--lineColor);
+    /* box-shadow:
+      0 3px 6px rgba(0, 0, 0, 0.16),
+      0 3px 6px rgba(0, 0, 0, 0.2); */
+
+    /* filter: drop-shadow(-3px 0px 0px #ffbf00); */
 
     /* sizes */
     font-weight: bold;

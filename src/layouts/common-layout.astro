@@ -1,0 +1,42 @@
+---
+import "@fontsource/source-sans-pro/400.css";
+import "@fontsource/source-sans-pro/700.css";
+import "../styles/globals.css";
+---
+
+<style>
+  body {
+    background-image: radial-gradient(circle, #afafaf 0.5px, #fcfcfc 1px);
+    background-size: 17px 17px;
+    color: white;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+  .wrapper {
+    flex: 1;
+    margin-inline: var(--inline-spacing);
+    margin-block: var(--block-spacing);
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title></title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <slot />
+    </div>
+  </body>
+</html>

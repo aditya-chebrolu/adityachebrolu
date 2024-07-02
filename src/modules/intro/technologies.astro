@@ -1,0 +1,25 @@
+---
+import UnderlinedText from "@components/astro/underlined-text.astro";
+import Section from "@components/astro/section.astro";
+const icons = await Astro.glob("@icons/tech/*.astro");
+---
+
+<style>
+  .tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+</style>
+<Section>
+  <UnderlinedText
+    text="TECHNOLOGIES"
+    type="h2"
+    size="md"
+    color="#2A3439"
+    lineColor="#FB607F"
+  />
+  <div class="tech">
+    {icons.map(({ default: Icon }) => <Icon />)}
+  </div>
+</Section>

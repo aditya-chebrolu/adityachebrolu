@@ -1,0 +1,32 @@
+---
+import Git from "@icons/socials/git.astro";
+import Mail from "@icons/socials/mail.astro";
+import LinkedIn from "@icons/socials/linked-in.astro";
+---
+
+<style>
+  .socials {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+  }
+
+  .resume {
+    background-color: #003262;
+    align-self: stretch;
+    padding: 0 8px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    box-shadow:
+      0 3px 6px rgba(0, 0, 0, 0.16),
+      0 3px 6px rgba(0, 0, 0, 0.2);
+  }
+</style>
+
+<div class="socials">
+  <Git />
+  <Mail />
+  <LinkedIn />
+  <div class="resume">Resume</div>
+</div>

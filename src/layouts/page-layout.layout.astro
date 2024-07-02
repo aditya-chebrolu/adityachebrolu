@@ -2,7 +2,7 @@
 import "@fontsource/source-sans-pro/400.css";
 import "@fontsource/source-sans-pro/700.css";
 import "../styles/globals.css";
-import UnderlinedText from "../components/underlined-text.astro";
+import UnderlinedText from "../components/astro/underlined-text.astro";
 
 type Props = {
   pageTitle: string;
@@ -117,7 +117,7 @@ const { pageTitle, underlineColor = "" } = Astro.props;
       </div>
       <div class="navigations">
         <a href="/tags">All Tags</a>
-        <a href="/">All Posts</a>
+        <a href="/posts">All Posts</a>
       </div>
     </div>
     <div class="wrapper">

@@ -1,0 +1,173 @@
+{
+  "title": "Zsh Commands Cheat Sheet",
+  "tags": ["zsh", "terminal", "commands"],
+  "language": "shell",
+  "sections": [
+    {
+      "subtitle": "Navigation",
+      "snippets": [
+        {
+          "description": [
+            "Change the current directory to the specified directory."
+          ],
+          "code": "cd <directory>"
+        },
+        {
+          "description": ["List the contents of the current directory."],
+          "code": "ls"
+        },
+        {
+          "description": [
+            "Print the full path of the current working directory."
+          ],
+          "code": "pwd"
+        },
+        {
+          "description": ["Go to the home directory."],
+          "code": "cd ~"
+        },
+        {
+          "description": ["Go up one directory level."],
+          "code": "cd .."
+        },
+        {
+          "description": ["Navigate to the previous directory."],
+          "code": "cd -"
+        }
+      ]
+    },
+    {
+      "subtitle": "File Operations",
+      "snippets": [
+        {
+          "description": [
+            "Copy a file or directory from source to destination."
+          ],
+          "code": "cp <source> <destination>"
+        },
+        {
+          "description": ["Move or rename a file or directory."],
+          "code": "mv <source> <destination>"
+        },
+        {
+          "description": ["Remove a file."],
+          "code": "rm <file>"
+        },
+        {
+          "description": ["Remove a directory and its contents."],
+          "code": "rm -r <directory>"
+        },
+        {
+          "description": ["Create a new directory."],
+          "code": "mkdir <directory>"
+        },
+        {
+          "description": ["Create a new file."],
+          "code": "touch <file>"
+        }
+      ]
+    },
+    {
+      "subtitle": "File Permissions",
+      "snippets": [
+        {
+          "description": ["Change the permissions of a file or directory."],
+          "code": "chmod <permissions> <file>"
+        },
+        {
+          "description": ["Change the owner of a file or directory."],
+          "code": "chown <owner> <file>"
+        },
+        {
+          "description": ["Change the group ownership of a file or directory."],
+          "code": "chgrp <group> <file>"
+        }
+      ]
+    },
+    {
+      "subtitle": "Process Management",
+      "snippets": [
+        {
+          "description": ["Display a list of currently running processes."],
+          "code": "ps"
+        },
+        {
+          "description": [
+            "Display a list of running processes with detailed information."
+          ],
+          "code": "ps aux"
+        },
+        {
+          "description": ["Terminate a process by its PID (Process ID)."],
+          "code": "kill <PID>"
+        },
+        {
+          "description": ["Terminate a process by its name."],
+          "code": "pkill <process_name>"
+        },
+        {
+          "description": ["Display the resource usage of the current system."],
+          "code": "top"
+        }
+      ]
+    },
+    {
+      "subtitle": "Network Commands",
+      "snippets": [
+        {
+          "description": [
+            "Display network interfaces and their configurations."
+          ],
+          "code": "ifconfig"
+        },
+        {
+          "description": ["Ping a host to check its reachability."],
+          "code": "ping <host>"
+        },
+        {
+          "description": ["Display the routing table."],
+          "code": "netstat -r"
+        },
+        {
+          "description": ["Display active internet connections."],
+          "code": "netstat -an"
+        },
+        {
+          "description": ["Fetch a webpage content using HTTP GET request."],
+          "code": "curl <URL>"
+        }
+      ]
+    },
+    {
+      "subtitle": "Search and Filtering",
+      "snippets": [
+        {
+          "description": ["Search for files in a directory hierarchy."],
+          "code": "find <directory> -name <filename>"
+        },
+        {
+          "description": ["Search for a pattern in files."],
+          "code": "grep <pattern> <file>"
+        },
+        {
+          "description": [
+            "Search for a pattern recursively in all files in a directory."
+          ],
+          "code": "grep -r <pattern> <directory>"
+        },
+        {
+          "description": ["Display the first few lines of a file."],
+          "code": "head <file>"
+        },
+        {
+          "description": ["Display the last few lines of a file."],
+          "code": "tail <file>"
+        },
+        {
+          "description": ["Follow the end of a file live."],
+          "code": "tail -f <file>"
+        }
+      ]
+    }
+  ]
+}
